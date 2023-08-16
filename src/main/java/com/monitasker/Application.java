@@ -1,13 +1,13 @@
-package com.monitasker.domain;
+package com.monitasker;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class MonitaskerApplication {
+public class Application {
 
     public static void main(String[] args) {
-        SpringApplication.run(MonitaskerApplication.class, args);
+        SpringApplication.run(Application.class, args);
     }
 
 }
