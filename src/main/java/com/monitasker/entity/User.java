@@ -7,6 +7,7 @@ import org.hibernate.annotations.JdbcTypeCode;
 import org.hibernate.proxy.HibernateProxy;
 import org.hibernate.type.SqlTypes;
 
+import java.io.Serializable;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
@@ -19,7 +20,7 @@ import java.util.Objects;
 @Table(name = "TB_users")
 @NoArgsConstructor
 @AllArgsConstructor
-public class User {
+public class User implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(nullable = false, unique = true)
@@ -34,7 +35,7 @@ public class User {
     private String email;
 
     @Lob
-    @Column(name = "passwordhash", nullable = false)
+    @Column(name = "passwordhash", nullable = false, columnDefinition = "BINARY(60)")
     @JdbcTypeCode(SqlTypes.BINARY)
     private byte[] passwordHash;
 
