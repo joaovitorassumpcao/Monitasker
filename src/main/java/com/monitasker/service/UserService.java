@@ -34,9 +34,8 @@ public class UserService {
         return userRepository.save(user);
     }
 
-    public User updateUser(Long id, User updatedUser) {
-        User user = userRepository.findById(id)
-                .orElseThrow(IllegalArgumentException::new);
-
-    }
+    //public User updateUser(Long id, User updatedUser) {
+        //User user = userRepository.findById(id);
+        //if ()
+    //}
 }
