@@ -1,4 +1,4 @@
-package com.monitasker.domain;
+package com.monitasker;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
