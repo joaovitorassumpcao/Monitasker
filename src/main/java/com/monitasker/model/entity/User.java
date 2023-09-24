@@ -1,5 +1,6 @@
-package com.monitasker.entity;
+package com.monitasker.model.entity;
 
+import com.monitasker.model.enums.UserRole;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import lombok.*;
@@ -33,6 +34,10 @@ public class User implements Serializable {
     @JdbcTypeCode(SqlTypes.NVARCHAR)
     @Email
     private String email;
+
+    @Column(nullable = false)
+    @Enumerated(EnumType.STRING)
+    private UserRole userRole;
 
     @Lob
     @Column(name = "passwordhash", nullable = false, columnDefinition = "BINARY(60)")

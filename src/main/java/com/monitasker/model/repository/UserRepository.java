@@ -1,6 +1,6 @@
-package com.monitasker.repository;
+package com.monitasker.model.repository;
 
-import com.monitasker.entity.User;
+import com.monitasker.model.entity.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

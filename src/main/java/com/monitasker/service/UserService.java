@@ -1,7 +1,7 @@
 package com.monitasker.service;
 
-import com.monitasker.entity.User;
-import com.monitasker.repository.UserRepository;
+import com.monitasker.model.entity.User;
+import com.monitasker.model.repository.UserRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -38,4 +38,6 @@ public class UserService {
         //User user = userRepository.findById(id);
         //if ()
     //}
+
+
 }

@@ -1,4 +1,4 @@
-package com.monitasker.entity;
+package com.monitasker.model.entity;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;

@@ -1,9 +1,7 @@
 package com.monitasker.service;
 
-import com.fasterxml.jackson.annotation.OptBoolean;
-import com.monitasker.entity.Task;
-import com.monitasker.repository.TaskRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.monitasker.model.entity.Task;
+import com.monitasker.model.repository.TaskRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
