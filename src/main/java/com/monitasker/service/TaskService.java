@@ -26,4 +26,6 @@ public class TaskService {
     public Optional<Task> findByUserId(Long userId) {
         return taskRepository.findByUser_Tasks_User_Id(userId);
     }
+
+
 }
