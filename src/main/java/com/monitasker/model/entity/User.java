@@ -1,18 +1,18 @@
 package com.monitasker.model.entity;
 
-import com.monitasker.model.enums.UserRole;
+import com.monitasker.model.enums.Role;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import lombok.*;
 import org.hibernate.annotations.JdbcTypeCode;
 import org.hibernate.proxy.HibernateProxy;
 import org.hibernate.type.SqlTypes;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 
 import java.io.Serializable;
 import java.nio.charset.StandardCharsets;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 
 @Getter
 @Setter
@@ -21,11 +21,7 @@ import java.util.Objects;
 @Table(name = "TB_users")
 @NoArgsConstructor
 @AllArgsConstructor
-public class User implements Serializable {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(nullable = false, unique = true)
-    private Long id;
+public class User extends AbstractEntity implements Serializable, UserDetails {
 
     @Column(length = 50, nullable = false)
     private String username;
@@ -35,10 +31,11 @@ public class User implements Serializable {
     @Email
     private String email;
 
-    @Column(nullable = false)
     @Enumerated(EnumType.STRING)
-    private UserRole userRole;
+    @ElementCollection(fetch = FetchType.EAGER)
+    private Set<Role> roles;
 
+    @Getter
     @Lob
     @Column(name = "passwordhash", nullable = false, columnDefinition = "BINARY(60)")
     @JdbcTypeCode(SqlTypes.BINARY)
@@ -69,7 +66,7 @@ public class User implements Serializable {
     @Override
     public String toString() {
         return "User{" +
-                "id=" + id +
+                "id=" + this.getId() +
                 ", username='" + username + '\'' +
                 '}';
     }
@@ -88,5 +85,31 @@ public class User implements Serializable {
     @Override
     public final int hashCode() {
         return this instanceof HibernateProxy ? ((HibernateProxy) this).getHibernateLazyInitializer().getPersistentClass().hashCode() : getClass().hashCode();
+    }
+
+    
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        return null; // TODO: 24/09/2023  
+    }
+
+    @Override
+    public boolean isAccountNonExpired() {
+        return false; // TODO: 24/09/2023  
+    }
+
+    @Override
+    public boolean isAccountNonLocked() {
+        return false; // TODO: 24/09/2023  
+    }
+
+    @Override
+    public boolean isCredentialsNonExpired() {
+        return false; // TODO: 24/09/2023  
+    }
+
+    @Override
+    public boolean isEnabled() {
+        return false; // TODO: 24/09/2023  
     }
 }
