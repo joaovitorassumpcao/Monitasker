@@ -2,6 +2,7 @@ package com.monitasker.service;
 
 import com.monitasker.model.entity.User;
 import com.monitasker.model.repository.UserRepository;
+import org.jetbrains.annotations.NotNull;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -34,10 +35,13 @@ public class UserService {
         return userRepository.save(user);
     }
 
-    //public User updateUser(Long id, User updatedUser) {
-        //User user = userRepository.findById(id);
-        //if ()
-    //}
+    public Optional<User> updateUser(Long id, User updatedUser) {
+        Optional<User> user = userRepository.findById(id);
+        if (user.isPresent()) return Optional.of(userRepository.save(updatedUser));
+        else return Optional.empty();
+    }
 
-
+    public void deleteUser(Long id) {
+        userRepository.deleteById(id);
+    }
 }

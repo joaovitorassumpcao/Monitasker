@@ -27,5 +27,17 @@ public class TaskService {
         return taskRepository.findByUser_Tasks_User_Id(userId);
     }
 
+    public Task createTask(Task task) {
+        return taskRepository.save(task);
+    }
 
+    public Optional<Task> updateTask(Long id, Task modifiedTask) {
+        Optional<Task> existingTask = taskRepository.findById(id);
+        if (existingTask.isPresent()) return Optional.of(taskRepository.save(modifiedTask));
+        else Optional.empty();
+    }
+
+    public void deleteTask(Long id) {
+        taskRepository.deleteById(id);
+    }
 }

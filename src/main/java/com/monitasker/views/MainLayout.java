@@ -83,7 +83,7 @@ public class MainLayout extends AppLayout {
 
         }
         if (accessChecker.hasAccess(TarefaView.class)) {
-            nav.addItem(new SideNavItem("Visual View Builder", TarefaView.class,
+            nav.addItem(new SideNavItem("Tarefa", TarefaView.class,
                     LineAwesomeIcon.PENCIL_RULER_SOLID.create()));
 
         }
